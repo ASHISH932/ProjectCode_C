@@ -1,0 +1,58 @@
+
+// SELECTION SORT
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int i,n,a[100],j,k,small,temp,flag;
+
+    cout<<"Enter the number of elements in the array :";
+    cin>>n;
+
+    cout<<"Enter the elements:"<<endl;
+
+    for(i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+
+    //IMPLEMENTING SELECTION SORT
+
+    for(j=0;j<n-1;j++)
+    {
+
+    flag = 0;
+    small = a[j];
+
+    for(i=j;i<n;i++)
+    {
+        if(a[i]<small)
+           {
+               small=a[i];
+               k=i;
+               flag = 1;
+           }
+    }
+
+    if(flag==1)
+    {
+    temp=a[j];
+    a[j] = small;
+    a[k] = temp;
+    }
+
+
+    }
+
+    cout<<endl<<"The Sorted Array:"<<endl;
+
+    for(i=0;i<n;i++)
+    {
+        cout<<a[i]<<endl;
+    }
+
+
+    return 0;
+}
