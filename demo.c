@@ -1,48 +1,92 @@
 
+// BINARY SEARCH
 
-//  BUBBLE SORT
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    int i,t,temp,flag,a[100];
+    int n,i,k,j,s,last,beg,flag,small,temp,mid;
+    int a[100];
 
     cout<<"Enter the number of elements in the array :";
-    cin>>t;
+    cin >> n;
 
     cout<<"Enter the elements:"<<endl;
-
-    for(i=0;i<t;i++)
+    for(i=0;i<n;i++)
     {
         cin>>a[i];
     }
 
-    //IMPLEMENTING BUBBLE SORT
+    cout<<endl<<"Enter the element to search for :";
+    cin>>s;
 
-    do
+    //SORTING THE ARRAY
+
+
+    for(j=0;j<n-1;j++)
     {
-        flag = 0;
 
-        for(i=0;i<t-1;i++)
-        {
+    flag = 0;
+    small = a[j];
 
-            if(a[i+1]<a[i])
-            {
-                temp=a[i];
-                a[i]=a[i+1];
-                a[i+1]=temp;
-                flag = 1;
-            }
-        }
-    }while(flag==1);
+    for(i=j;i<n;i++)
+    {
+        if(a[i]<small)
+           {
+               small=a[i];
+               k=i;
+               flag = 1;
+           }
+    }
 
-    cout<<endl<<"The sorted array is :"<<endl;
+    if(flag==1)
+    {
+    temp=a[j];
+    a[j] = small;
+    a[k] = temp;
+    }
 
-    for(i=0;i<t;i++)
+
+    }
+
+    cout<<endl<<"The Sorted Array:"<<endl;
+
+    for(i=0;i<n;i++)
     {
         cout<<a[i]<<endl;
+    }
+
+
+    //IMPLEMENTING BINARY SEARCH
+
+    beg = 0;
+    last = n-1;
+    flag =0 ;
+    while(last>=beg && flag==0)
+    {
+       mid = (beg + last)/2;
+       if(s<a[mid])
+       {
+           last=mid - 1;
+       }
+       else
+        if(s>a[mid])
+       {
+           beg = mid+1;
+       }
+       else
+        {
+            cout<<endl<<"The element is found at position :"<<mid + 1;
+            flag=1;
+        }
+
+    }
+
+    if(flag==0)
+    {
+        cout<<endl<<"The element "<<s<<" does not exist in the array.";
     }
     return 0;
 }
