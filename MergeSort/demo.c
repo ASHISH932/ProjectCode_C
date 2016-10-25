@@ -8,7 +8,7 @@ void sort(int a[],int n,int l)
         sort(a,max,mid+1);
 }
 int main()
-{
+{    printf("what is your problem? \n");
     int a[20],j,i,n;
     scanf("%d",&n);
     for(i=0;i<n;i++)
