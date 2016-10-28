@@ -1,0 +1,189 @@
+#include <iostream.h>
+#include <iomanip.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <stdio.h>
+
+
+struct node
+{
+    int info;
+    node*next;
+};
+void push_A(int &);
+void pop_A(int &);
+void push_L(node *&,node *&);
+void pop_L(node *&);
+
+
+node* createnode(int ele)
+{
+    node* ptr;
+    ptr=new(node);
+    ptr->info=ele;
+    ptr->next=NULL;
+    return(ptr);
+}
+void push_A(int &top,int a[])
+{   cout<<"working on it"<<endl;
+    int ele;
+    int size=20;
+
+
+    if(top==size-1)
+    {
+        cout<<"overflow";
+    }
+    else
+        if(top==-1)
+    { cout<<"enter the element"<<endl;
+    cin>>ele;
+        top=0;
+        a[top]=ele;
+
+
+    }
+    else{cout<<"enter the element"<<endl;
+    cin>>ele;
+    ++top;
+    a[top]=ele;}
+    cout<<"stack after insertion is"<<endl;
+    for(int i=0;i<=top;++i)
+    cout<<"stack element["<<i+1<<"]"<<a[i]<<endl;
+}
+void pop_A(int &top,int a[])
+{
+    if(top==-1)
+    {
+        cout<<"underflow"<<endl;
+        cout<<endl;
+
+
+    }
+    else if(top==0)
+    {cout<<"deleted the element "<<endl;
+        top=-1;
+
+
+    }
+    else
+       {
+
+
+        cout<<"deleted the element "<<endl;
+        top=top-1;}
+        if(top==-1)
+            cout<<"stack has become empty"<<endl;
+        else
+        {cout<<"stack after deletion is"<<endl;
+        for(int i=0;i<=top;++i)
+            cout<<"stack element["<<i+1<<"]"<<a[i]<<endl;}
+
+
+
+
+}
+
+
+void push_L(node *&top,node *&ptr)
+{   cout<<"working on it"<<endl;
+    node *save;
+    if(ptr==NULL)
+    {
+        cout<<"overflow";
+
+
+    }
+    else if(top==NULL)
+    {  cout<<"element added"<<endl;
+        top=ptr;
+
+
+    }
+    else
+    {
+        save=top;
+        ptr->next=save;
+        top=ptr;
+    }
+    cout<<"element("<<(ptr->info) <<")added at position["<<(top->next) <<"]"<<endl;
+}
+
+
+    void pop_L(node *&top)
+    {   cout<<"working on it"<<endl;
+        if(top==NULL)
+        {
+            cout<<"underflow"<<endl;
+            cout<<"process cant take place"<<endl;
+
+
+        }
+        else
+            if(top->next==NULL)
+        {cout<<"element deleted"<<endl;
+            top=NULL;
+        }
+
+
+        else{
+                node *save; save=top;
+        top=top->next;
+        cout<<"element["<<save->info<<"]"<<"at position ["<<save<<endl;
+        delete(save);
+        cout<<"deleted"<<endl;
+        }
+
+
+    }
+
+
+int main()
+{int a[20],n,topa,element;
+topa=-1;
+node *ptr2;
+
+
+char ch;
+node* top=NULL;
+do
+{
+
+
+cout<<"1.insert in stack"<<endl;
+cout<<"2.insert in stack as linked list"<<endl;
+cout<<"3.delete in stack as array"<<endl;
+cout<<"4.delete in stack as linked list"<<endl;
+cout<<"5.exit"<<endl;
+cout<<"enter your choice "<<endl;
+
+
+
+
+cin>>n;
+
+
+switch(n)
+{
+    case 1:push_A(topa,a);
+    break;
+    case 2:{
+        cout<<"enter the element you want to add";
+        cin>>element;
+        ptr2=createnode(element);
+        push_L(top,ptr2);}
+    break;
+    case 3:pop_A(topa,a);
+    break;
+    case 4:pop_L(top);
+    break;
+    case 5:exit(0);
+    cout<<"thank you"<<endl;
+    default:cout<<"wrong choice"<<endl;
+}
+cout<<"want to continue using the program (y/n) enter either yes or no"<<endl;
+cin>>ch;
+}while(ch=='y');
+
+
+}

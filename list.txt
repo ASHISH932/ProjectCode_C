@@ -1,0 +1,107 @@
+#include <iostream.h>
+#include<stdlib.h>
+
+int main()
+{
+    int ch,n,place; char choice;
+    struct node
+    {
+        int info;
+        node *next;
+    }*temp,*temp1,*temp2,*start,*rear,*save,*first;
+    start=rear=save=NULL;
+     if(rear==NULL) {cout<<"the list is empty, enter 5 elements first";
+    int i=0;
+    cout<<"\nenter info  "; cin>>n;
+                  temp= new node;
+                  temp->info=n; temp->next=NULL;
+                  rear=start=save=first=temp;
+    while(i<4)
+    {
+       cout<<"\nenter info  "; cin>>n;
+                  temp= new node;
+                  temp->info=n; temp->next=NULL;
+                  rear->next=temp; rear= temp; i++;
+    }
+    }
+     label1:
+    cout<<"LINKED IMPLEMENTATION \n1.insertion\n2.deletion\n3.exit"; cin>>ch;
+     switch(ch)
+     {
+         case 1: do{cout<<"\n\nenter the position of the element after which you want to insert the new element(0 for beginning)"; int f=0;
+                 cin>>place; if(place==0)
+                 {
+                     temp1=new node;
+                     cout<<"\n enter info"; cin>>n;
+                     temp1->info=n;
+                     temp1->next=save;
+                     save=start=first=temp1;
+                     cout<<"\nthe list is now\n";
+                 while(start!=NULL)
+                  {
+                   cout<<start->info<<endl;
+                   start=start->next;
+                  } start=first;
+
+                 }
+                 else if(place==5)
+                 {
+                     cout<<"\n enter info"; cin>>n;
+                     temp=new node;
+                     temp->info=n;
+                     temp->next=NULL;
+                     rear->next=temp; rear=temp;
+                     cout<<"\nthe list is now\n";
+                 while(start!=NULL)
+                  {
+                   cout<<start->info<<endl;
+                   start=start->next;
+                  } start=first;
+
+                 }
+                 else
+                 {
+                     while(f<(place-1))
+                     {
+                         save=save->next; f++;}
+                      cout<<"\n enter info"; cin>>n;
+                      temp1=new node;
+                      temp2=save->next;
+                      temp1->info=n;
+                      temp1->next=temp2;
+                      save->next=temp1; save=start;
+                      cout<<"\nthe list is now\n";
+                 while(start!=NULL)
+                  {
+                   cout<<start->info<<endl;
+                   start=start->next;
+                  } start=first;
+                 } cout<<"\ndo you want to enter more? (y/n)"; cin>>choice;} while(choice=='y'||choice=='Y'); goto label1;
+
+         case 2:  do{cout<<"\n\nenter the position of the element you want to delete";
+                   cin>>place; int f=1;
+                   if(place==1) start=first=save=save->next;
+                   else{
+                   while(f<=(place-2))
+                   {
+                       first=first->next; f++;
+                   }
+                   save=first->next;
+                   if(save->next==NULL){ first->next=NULL;}
+                   else {first->next=save->next;}
+                   first=start;
+                   save=start;}
+                   while(start!=NULL)
+                  {
+                   cout<<start->info<<endl;
+                   start=start->next;
+                  } start=first;
+                  cout<<"\ndo you want to continue?(y/n)"; cin>>choice;
+                  }while(choice=='y'||choice=='Y'); goto label1;
+            case 3: exit(0);
+
+     } delete temp; delete temp1; delete temp2; delete start; delete rear; delete save; delete first;
+
+    return 0;
+}
+
