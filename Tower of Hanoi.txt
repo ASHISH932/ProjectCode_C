@@ -1,0 +1,38 @@
+/* TOWER OF HANOI : It takes number of disks as input from the user and shifts the disks from rod A to rod C. */
+
+
+
+
+#include <iostream>
+
+using namespace std;
+
+    void tower(int n,char toRod,char fromRod, char spareRod)
+    {
+        if(n==1)
+        {
+            cout<<"Move disk "<<n<<" from rod "<<fromRod<<" to rod "<<toRod<<endl;
+        }
+
+        else{
+        tower(n-1,spareRod,fromRod,toRod);
+
+        cout<<"Move disk "<<n<<" from rod "<<fromRod<<" to rod "<<toRod<<endl;
+
+        tower(n-1,toRod,spareRod,fromRod);
+
+        }
+    }
+
+int main()
+{
+    int n;
+
+    cout << "Enter the number of disks in rod A :" << endl;
+    cin >> n;
+    cout<<endl;
+
+    tower(n,'C','A','B');
+
+    return 0;
+}

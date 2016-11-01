@@ -1,0 +1,50 @@
+
+//INSERTION SORT
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int i,t,a[100],key,j,k;
+
+    cout<<"Enter the number of elements in the array :";
+    cin>>t;
+
+    cout<<"Enter the elements:"<<endl;
+
+    for(i=0;i<t;i++)
+    {
+        cin>>a[i];
+    }
+
+    //IMPLEMENTING INSERTION SORT
+
+    for(j=1;j<t;j++)
+    {
+        key = a[j];
+
+        for(i=0;i<j;i++)
+        {
+            if(a[i]>key)
+              {
+                 for(k=j-1;k>=i;k--)
+                 {
+                     a[k+1]=a[k];
+                 }
+                 a[i]=key;
+                 break;
+              }
+
+        }
+    }
+
+    cout<<endl<<"The sorted array is :"<<endl;
+
+    for(i=0;i<t;i++)
+    {
+        cout<<a[i]<<endl;
+    }
+
+    return 0;
+}

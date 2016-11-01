@@ -1,0 +1,53 @@
+// SHUFFLE A GIVEN ARRAY
+
+
+#include <iostream>
+#include<stdlib.h>
+
+using namespace std;
+
+
+int main()
+{
+    int i,n,a[100],temp[100],p,r,j;
+    cout << "Enter the number of elements in the array :" << endl;
+    cin>> n;
+
+    cout<<"Enter the Elements :"<<endl;
+
+    for(i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+
+    for(i=0;i<n;i++)
+    {
+        temp[i]=a[i];
+    }
+
+    for(i=0;i<n;i++)
+    {
+    r = n-i;
+    p = rand() % r;
+
+    a[i] = temp[p];
+
+    for(j=0;j<n-i;j++)
+    {
+        if(j>p)
+        {
+            temp[j-1]=temp[j];
+        }
+    }
+    }
+
+    cout<<endl<<"The array after shuffling :"<<endl;
+
+    for(i=0;i<n;i++)
+    {
+        cout<<a[i]<<endl;
+    }
+
+
+    return 0;
+}

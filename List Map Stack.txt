@@ -1,0 +1,120 @@
+
+// LIST MAP STACK
+
+#include <iostream>
+
+using namespace std;
+
+    struct Node
+    {
+        int data;
+        Node* link;
+    };
+
+    Node* a;
+
+void push(int x)
+{
+    Node* temp;
+    temp = new Node;
+    temp->data = x;
+    temp->link = a;
+    a = temp;
+}
+
+void pop()
+{
+    Node* temp;
+    temp = a;
+    a = temp->link;
+    delete temp;
+
+}
+
+
+int main()
+{
+    a = NULL;
+    cout<<"Enter the elements :"<<endl;
+
+    int x;
+    char ch;
+    ch = 'y';
+    while(ch=='y')
+    {
+        cout<<endl<<"Do you want to enter element ? (y/n) "<<endl;
+        cin>>ch;
+
+        if(ch=='y')
+        {
+            cout<<endl<<"Enter the element :";
+            cin>>x;
+            push(x);
+        }
+    }
+
+    // PRINTING THE LINKED LIST
+
+    cout<<endl<<"List is :"<<endl;
+
+    Node* temp;
+
+    temp = a;
+
+    while(temp!=NULL)
+    {
+        cout<<temp->data<<endl;
+        temp = temp->link;
+    }
+
+    // DELETION OF ELEMENTS
+
+    cout<<endl<<"Deletion of elements :"<<endl;
+
+    ch = 'y';
+    while(ch=='y')
+    {
+        cout<<endl<<"Do you want to delete element ? (y/n) "<<endl;
+        cin>>ch;
+
+        if(ch=='y')
+        {
+            if(a==NULL)
+            {
+                cout<<endl<<"UNDERFLOW!!";
+                ch = 'n';
+            }
+            else {
+
+            pop();
+            cout<<endl<<"The top element is deleted :";
+            cout<<endl<<"List is :"<<endl;
+
+
+            temp = a;
+
+            while(temp!=NULL)
+            {
+            cout<<temp->data<<endl;
+            temp = temp->link;
+            }
+            }
+        }
+    }
+
+    //PRINTING THE FINAL LIST
+
+    cout<<endl<<endl<<"The final list is :"<<endl;
+
+
+    temp = a;
+
+    while(temp!=NULL)
+    {
+    cout<<temp->data<<endl;
+    temp = temp->link;
+    }
+
+
+    return 0;
+}
